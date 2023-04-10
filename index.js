@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors")
 const { connection } = require("./Config/db");
 const { UserRoute } = require("./Routes/User.routes");
 const { PostRoute } = require("./Routes/Post.routes");
@@ -6,6 +7,7 @@ const { PostRoute } = require("./Routes/Post.routes");
 const app = express();
 
 app.use(express.json());
+app.use(cors())
 
 //User Information
 app.use("/", UserRoute);
