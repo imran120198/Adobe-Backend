@@ -4,6 +4,17 @@ require("dotenv").config();
 const PostRoute = Router();
 const { PostModel } = require("../Model/Post.model");
 
+//Get all the post data
+PostRoute.get("/posts", async (req,res) => {
+  try{
+    const userData = await PostModel.find({})
+    res.status(201).send(userData)
+  }
+  catch(err){
+   res.status(500).send("Error in getting Data") 
+  }
+})
+
 //Create a new post.
 PostRoute.post("/posts", async (req, res) => {
   try {
