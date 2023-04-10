@@ -4,6 +4,17 @@ require("dotenv").config();
 const UserRoute = Router();
 const { UserModel } = require("../Model/User.model");
 
+//Get all the user data
+UserRoute.get("/users", async (req,res) => {
+  try{
+    const userData = await UserModel.find({})
+    res.status(201).send(userData)
+  }
+  catch(err){
+   res.status(500).send("Error in getting Data") 
+  }
+})
+
 //Create a new user.
 UserRoute.post("/users", async (req, res) => {
   try {
